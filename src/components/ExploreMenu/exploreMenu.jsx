@@ -1,10 +1,29 @@
 import React from 'react'
 import './exploreMenu.css'
+import { menu_list } from '../../assets/assets'
 
-const exploreMenu = () => {
+const exploreMenu = ({category,setCategory}) => {
   return (
-    <div>exploreMenu</div>
+    <div className='explore-menu' id='explore-menu'>
+        <h1>Explore our menu</h1>
+        <p className='explore-menu-text'> Choose from a diverse menu featuring a delectable array of dishes crafted with the finest ingredients and culinary expertise</p>
+        <div className="explore-menu-list">
+            {menu_list.map( (item,index) => {
+                return (
+                    <div key={index} className='explore-menu-list-item'>
+                        <img  onClick={() => setCategory(prev => prev===item.menu_name ? "All" : item.menu_name )}  className={category===item.menu_name ? "active" : ""}   src={item.menu_image} alt="" />
+                        <p>{item.menu_name}</p>
+                    </div>
+                )
+            })}
+        </div>
+        <hr />
+        
+    </div>
   )
 }
 
 export default exploreMenu
+
+// 
+// 
